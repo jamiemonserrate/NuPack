@@ -1,14 +1,17 @@
 class Job
   FLAT_MARKUP_PERCENTAGE = 0.05
-  PER_PERSON_MARKUP_PERCENTAGE = 0.012
 
-  def initialize(cost, number_of_people)
+  def initialize(cost)
     @cost = cost
-    @number_of_people = number_of_people
+    @markups = []
+  end
+
+  def add_markup(markup)
+    @markups << markup
   end
 
   def estimate
-    cost_with_flat_markup + number_of_people_markup(cost_with_flat_markup)
+    cost_with_flat_markup + total_markup
   end
 
   private
@@ -20,7 +23,10 @@ class Job
     @cost * FLAT_MARKUP_PERCENTAGE
   end
 
-  def number_of_people_markup(amount)
-    @number_of_people * PER_PERSON_MARKUP_PERCENTAGE * amount
+  def total_markup
+    markup_amounts = @markups.collect { |markup| markup.add(cost_with_flat_markup) }
+
+    return markup_amounts.reduce(:+) unless markup_amounts.empty?
+    0
   end
 end

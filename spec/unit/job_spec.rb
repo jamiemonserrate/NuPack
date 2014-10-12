@@ -2,14 +2,21 @@ require 'spec_helper'
 
 describe Job do
   context '#estimate' do
-    it 'should add 5% flat markup' do
-      expect(Job.new(10, 0).estimate).to eq(10.5)
+    context 'base markup' do
+      it 'should add 5% flat markup' do
+        job = Job.new(10)
+
+        expect(job.estimate).to eq(10.5)
+      end
     end
 
-    it 'should add 1.2% for every person that needs to work on the job' do
-      expect(Job.new(20,1).estimate).to eq(21.252)
+    context 'per person markup' do
+      it 'should add 1.2% for every person that needs to work on the job' do
+        job = Job.new(20)
+        job.add_markup(PerPersonMarkup.new(2))
 
-      expect(Job.new(20,2).estimate).to eq(21.504)
+        expect(job.estimate).to eq(21.504)
+      end
     end
   end
 end
