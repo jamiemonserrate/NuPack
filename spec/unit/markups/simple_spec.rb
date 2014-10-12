@@ -10,6 +10,14 @@ module Markups
       it 'should be able to add 13% food markup' do
         expect(Simple.food.for(1)).to eq(0.13)
       end
+
+      it 'should be able to add 7.5% pharmaceuticals markup' do
+        expect(Simple.pharmaceuticals.for(1)).to eq(0.075)
+      end
+
+      it 'should be able to add 2% electronics markup' do
+        expect(Simple.electronics.for(1)).to eq(0.02)
+      end
     end
 
     context '#initialize' do
