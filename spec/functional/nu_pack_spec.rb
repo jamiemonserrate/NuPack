@@ -5,7 +5,7 @@ describe 'NuPack' do
     it 'should provide estimate' do
       job = Job.new(1299.99)
       job.add_markup(Markups::PerPerson.new(3))
-      job.add_markup(Markups::Simple.new(Markups::Simple::FOOD_RATE))
+      job.add_markup(Markups::Simple.food)
 
       expect(job.estimate).to eq(1591.58)
     end
@@ -15,7 +15,7 @@ describe 'NuPack' do
     it 'should provide estimate' do
       job = Job.new(5432.00)
       job.add_markup(Markups::PerPerson.new(1))
-      job.add_markup(Markups::Simple.new(Markups::Simple::PHARMACEUTICALS_RATE))
+      job.add_markup(Markups::Simple.pharmaceuticals)
 
       expect(job.estimate).to eq(6199.81)
     end

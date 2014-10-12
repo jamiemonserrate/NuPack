@@ -20,7 +20,7 @@ describe Job do
 
       it 'should be able to add simple markup' do
         job = Job.new(20)
-        job.add_markup(Markups::Simple.new(Markups::Simple::FOOD_RATE))
+        job.add_markup(Markups::Simple.food)
 
         expect(job.estimate).to eq(23.73)
       end
@@ -30,7 +30,7 @@ describe Job do
       it 'should be able to add multiple markups' do
         job = Job.new(20)
         job.add_markup(Markups::PerPerson.new(2))
-        job.add_markup(Markups::Simple.new(Markups::Simple::FOOD_RATE))
+        job.add_markup(Markups::Simple.food)
 
         expect(job.estimate).to eq(24.23)
       end

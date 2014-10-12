@@ -1,9 +1,11 @@
 module Markups
   class Simple
-    FLAT_RATE = 0.05
-    FOOD_RATE = 0.13
-    PHARMACEUTICALS_RATE= 0.075
-    ELECTRONICS_RATE= 0.02
+    module Rates
+      FLAT = 0.05
+      FOOD = 0.13
+      PHARMACEUTICALS = 0.075
+      ELECTRONICS = 0.02
+    end
 
     def initialize(markup_rate)
       @markup_rate = markup_rate
@@ -12,5 +14,12 @@ module Markups
     def for(cost)
       @markup_rate * cost
     end
+
+    [:flat, :food, :pharmaceuticals].each do |rate_name|
+      define_singleton_method rate_name do
+        Simple.new(Rates.const_get(rate_name.upcase))
+      end
+    end
+
   end
 end
