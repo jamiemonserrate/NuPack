@@ -14,7 +14,7 @@ class Job
 
   private
   def cost_with_flat_markup
-    @cost + SimpleMarkup.new(SimpleMarkup::FLAT_MARKUP_RATE).for(@cost)
+    @cost + Markups::SimpleMarkup.new(Markups::SimpleMarkup::FLAT_MARKUP_RATE).for(@cost)
   end
 
   def total_markup
