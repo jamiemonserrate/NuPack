@@ -10,4 +10,15 @@ describe 'NuPack' do
       expect(job.estimate).to eq(1591.577757)
     end
   end
+
+  context 'text case #2' do
+    it 'should provide estimate' do
+      job = Job.new(5432.00)
+      job.add_markup(PerPersonMarkup.new(1))
+      job.add_markup(SimpleMarkup.new(SimpleMarkup::PHARMACEUTICALS_MARKUP_RATE))
+
+      expect(job.estimate).to eq(6199.8132000000005)
+    end
+  end
+
 end
