@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Markups
   describe Simple do
-    context '#add' do
+    context '#for' do
       it 'should be able to add 5% flat markup' do
         expect(Simple.new(Simple::FLAT_RATE).for(1)).to eq(0.05)
       end
