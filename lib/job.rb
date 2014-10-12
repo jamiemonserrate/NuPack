@@ -1,11 +1,11 @@
 class Job
   def initialize(cost)
     @cost = cost
-    @markups = []
+    @additional_markups = []
   end
 
   def add_markup(markup)
-    @markups << markup
+    @additional_markups << markup
   end
 
   def estimate
@@ -18,7 +18,7 @@ class Job
   end
 
   def total_markup
-    markup_amounts = @markups.collect { |markup| markup.for(cost_with_flat_markup) }
+    markup_amounts = @additional_markups.collect { |markup| markup.for(cost_with_flat_markup) }
 
     return markup_amounts.reduce(:+) unless markup_amounts.empty?
     0
