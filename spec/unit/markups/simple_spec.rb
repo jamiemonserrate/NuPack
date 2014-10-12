@@ -11,5 +11,11 @@ module Markups
         expect(Simple.food.for(1)).to eq(0.13)
       end
     end
+
+    context '#initialize' do
+      it 'should not be able to create an object directly' do
+        expect {Simple.new(1)}.to raise_error(NoMethodError)
+      end
+    end
   end
 end

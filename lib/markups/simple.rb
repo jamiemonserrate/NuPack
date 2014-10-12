@@ -7,6 +7,8 @@ module Markups
       ELECTRONICS = 0.02
     end
 
+    private_class_method :new
+
     def initialize(markup_rate)
       @markup_rate = markup_rate
     end
@@ -17,9 +19,8 @@ module Markups
 
     Rates.constants.each do |rate_name|
       define_singleton_method rate_name.downcase do
-        Simple.new(Rates.const_get(rate_name))
+        new(Rates.const_get(rate_name))
       end
     end
-
   end
 end
