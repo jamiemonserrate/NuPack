@@ -1,5 +1,5 @@
 module Markups
-  class PerPersonMarkup
+  class PerPerson
     PER_PERSON_MARKUP_PERCENTAGE = 0.012
 
     def initialize(number_of_people)

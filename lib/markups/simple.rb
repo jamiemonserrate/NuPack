@@ -1,5 +1,5 @@
 module Markups
-  class SimpleMarkup
+  class Simple
     FLAT_MARKUP_RATE = 0.05
     FOOD_MARKUP_RATE = 0.13
     PHARMACEUTICALS_MARKUP_RATE= 0.075

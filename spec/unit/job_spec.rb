@@ -13,7 +13,7 @@ describe Job do
     context 'per person markup' do
       it 'should add 1.2% for every person that needs to work on the job' do
         job = Job.new(20)
-        job.add_markup(Markups::PerPersonMarkup.new(2))
+        job.add_markup(Markups::PerPerson.new(2))
 
         expect(job.estimate).to eq(21.5)
       end
@@ -22,7 +22,7 @@ describe Job do
     context 'round off' do
       it 'should round off the estimate to nearest 2 decimals' do
         job = Job.new(1)
-        job.add_markup(Markups::PerPersonMarkup.new(2))
+        job.add_markup(Markups::PerPerson.new(2))
 
         expect(job.estimate).to eq(1.08)
       end
