@@ -18,10 +18,7 @@ class Job
   end
 
   def total_markup
-    markup_amounts = @additional_markups.collect { |markup| markup.for(cost_with_flat_markup) }
-
-    return markup_amounts.reduce(:+) unless markup_amounts.empty?
-    0
+    @additional_markups.inject(0) { |sum, markup| sum + markup.for(cost_with_flat_markup) }
   end
 
   def round_off(amount)
