@@ -5,7 +5,7 @@ class PerPersonMarkup
     @number_of_people = number_of_people
   end
 
-  def add(cost)
+  def for(cost)
     @number_of_people * PER_PERSON_MARKUP_PERCENTAGE * cost
   end
 end

@@ -14,11 +14,11 @@ class Job
 
   private
   def cost_with_flat_markup
-    @cost + FlatMarkup.new.for(@cost)
+    @cost + SimpleMarkup.new(SimpleMarkup::FLAT_MARKUP_RATE).for(@cost)
   end
 
   def total_markup
-    markup_amounts = @markups.collect { |markup| markup.add(cost_with_flat_markup) }
+    markup_amounts = @markups.collect { |markup| markup.for(cost_with_flat_markup) }
 
     return markup_amounts.reduce(:+) unless markup_amounts.empty?
     0
