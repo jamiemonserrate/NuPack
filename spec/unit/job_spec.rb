@@ -10,12 +10,19 @@ describe Job do
       end
     end
 
-    context 'per person markup' do
-      it 'should add 1.2% for every person that needs to work on the job' do
+    context 'additional markup' do
+      it 'should be able to add per person markup' do
         job = Job.new(20)
         job.add_markup(Markups::PerPerson.new(2))
 
         expect(job.estimate).to eq(21.5)
+      end
+
+      it 'should be able to add simple markup' do
+        job = Job.new(20)
+        job.add_markup(Markups::Simple.new(Markups::Simple::FOOD_RATE))
+
+        expect(job.estimate).to eq(23.73)
       end
     end
 
