@@ -21,4 +21,13 @@ describe 'NuPack' do
     end
   end
 
+  context 'text case #3' do
+    it 'should provide estimate' do
+      job = Job.new(12456.95)
+      job.add_markup(PerPersonMarkup.new(4))
+
+      expect(job.estimate).to eq(13707.62778)
+    end
+  end
+
 end
