@@ -15,9 +15,9 @@ module Markups
       @markup_rate * cost
     end
 
-    [:flat, :food, :pharmaceuticals].each do |rate_name|
-      define_singleton_method rate_name do
-        Simple.new(Rates.const_get(rate_name.upcase))
+    Rates.constants.each do |rate_name|
+      define_singleton_method rate_name.downcase do
+        Simple.new(Rates.const_get(rate_name))
       end
     end
 
