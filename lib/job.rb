@@ -8,15 +8,19 @@ class Job
   end
 
   def estimate
-    @cost + flat_markup + number_of_people_markup
+    cost_with_flat_markup + number_of_people_markup(cost_with_flat_markup)
   end
 
   private
+  def cost_with_flat_markup
+    @cost + flat_markup
+  end
+
   def flat_markup
     @cost * FLAT_MARKUP_PERCENTAGE
   end
 
-  def number_of_people_markup
-    @number_of_people * PER_PERSON_MARKUP_PERCENTAGE * @cost
+  def number_of_people_markup(amount)
+    @number_of_people * PER_PERSON_MARKUP_PERCENTAGE * amount
   end
 end

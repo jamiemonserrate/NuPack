@@ -7,9 +7,9 @@ describe Job do
     end
 
     it 'should add 1.2% for every person that needs to work on the job' do
-      expect(Job.new(20,1).estimate).to eq(21.24)
+      expect(Job.new(20,1).estimate).to eq(21.252)
 
-      expect(Job.new(20,2).estimate).to eq(21.48)
+      expect(Job.new(20,2).estimate).to eq(21.504)
     end
   end
 end
