@@ -7,7 +7,7 @@ describe 'NuPack' do
       job.add_markup(PerPersonMarkup.new(3))
       job.add_markup(SimpleMarkup.new(SimpleMarkup::FOOD_MARKUP_RATE))
 
-      expect(job.estimate).to eq(1591.577757)
+      expect(job.estimate).to eq(1591.58)
     end
   end
 
@@ -17,7 +17,7 @@ describe 'NuPack' do
       job.add_markup(PerPersonMarkup.new(1))
       job.add_markup(SimpleMarkup.new(SimpleMarkup::PHARMACEUTICALS_MARKUP_RATE))
 
-      expect(job.estimate).to eq(6199.8132000000005)
+      expect(job.estimate).to eq(6199.81)
     end
   end
 
@@ -26,7 +26,7 @@ describe 'NuPack' do
       job = Job.new(12456.95)
       job.add_markup(PerPersonMarkup.new(4))
 
-      expect(job.estimate).to eq(13707.62778)
+      expect(job.estimate).to eq(13707.63)
     end
   end
 

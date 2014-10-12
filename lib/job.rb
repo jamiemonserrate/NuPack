@@ -9,7 +9,7 @@ class Job
   end
 
   def estimate
-    cost_with_flat_markup + total_markup
+    round_off cost_with_flat_markup + total_markup
   end
 
   private
@@ -22,5 +22,9 @@ class Job
 
     return markup_amounts.reduce(:+) unless markup_amounts.empty?
     0
+  end
+
+  def round_off(amount)
+    amount.round(2)
   end
 end

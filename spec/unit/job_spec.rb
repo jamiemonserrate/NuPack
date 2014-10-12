@@ -15,8 +15,18 @@ describe Job do
         job = Job.new(20)
         job.add_markup(PerPersonMarkup.new(2))
 
-        expect(job.estimate).to eq(21.504)
+        expect(job.estimate).to eq(21.5)
       end
     end
+
+    context 'round off' do
+      it 'should round off the estimate to nearest 2 decimals' do
+        job = Job.new(1)
+        job.add_markup(PerPersonMarkup.new(2))
+
+        expect(job.estimate).to eq(1.08)
+      end
+    end
+
   end
 end
