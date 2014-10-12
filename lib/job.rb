@@ -1,9 +1,16 @@
 class Job
-  def initialize(cost)
+  FLAT_MARKUP_PERCENTAGE = 0.05
 
+  def initialize(cost)
+    @cost = cost
   end
 
   def estimate
-    1364.98
+    @cost + flat_markup
+  end
+
+  private
+  def flat_markup
+    @cost * FLAT_MARKUP_PERCENTAGE
   end
 end
